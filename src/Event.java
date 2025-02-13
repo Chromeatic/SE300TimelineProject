@@ -1,10 +1,10 @@
 public class Event {
 
     private String name;
-    private int time;
+    private String time;
     private String info;
     
-    public Event(String name, int time, String info) 
+    public Event(String name, String time, String info) 
     {
 
         this.name = name;
@@ -17,7 +17,7 @@ public class Event {
         return name;
     }
 
-    public int getTime()
+    public String getTime()
     {
         return time;
     }

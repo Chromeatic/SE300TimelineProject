@@ -19,7 +19,7 @@ public class Timeline
             String time = scanner.nextLine();
             System.out.println("Enter the description of the event: ");
             String info = scanner.nextLine();
-            Event newEvent = new Event(name, Integer.parseInt(time), info);
+            Event newEvent = new Event(name, time, info);
             events.add(newEvent);
             do 
             {
@@ -48,5 +48,34 @@ public class Timeline
         {
             System.out.println(events.get(i).getName() + " " + events.get(i).getTime() + " " + events.get(i).getInfo());
         }
+    }
+
+    public void swap(int index1, int index2)
+    {
+        Event temp = events.get(index1);
+        events.set(index1, events.get(index2));
+        events.set(index2, temp);
+    }
+
+    public void sortTimeline(Scanner scanner)
+    {
+        int index1 = 0;
+        int index2 = -1;
+        if(events.size() == 1)
+        {
+            System.out.println("Timeline only contains one event. Cannot swap");
+        }
+        while (!(index1 >= 0 && index1 < index2 && index2 < events.size()) && events.size() != 1)
+        {
+            System.out.println("Enter first index to swap: Enter a number between 0 and " + (events.size()-1));
+            index1 = Integer.parseInt(scanner.nextLine());
+            System.out.println("Enter second index to swap: Enter a number between " + (index1+1) +" and " + (events.size()-1));
+            index2 = Integer.parseInt(scanner.nextLine());
+            if(!(index1 >= 0 && index1 < index2 && index2 < events.size()))
+            {
+                System.out.println("Invalid input. Try again");
+            }
+        } 
+        swap(index1, index2);
     }
 }
