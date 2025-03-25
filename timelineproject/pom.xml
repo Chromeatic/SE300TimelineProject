@@ -33,7 +33,24 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>maven-central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>gluon</id>
+            <url>https://nexus.gluonhq.com/nexus/content/repositories/releases</url>
+        </repository>
+    </repositories>
+
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.openjfx</groupId>
@@ -47,13 +64,26 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>timeline.project.JavaFXMenu</mainClass>
+                    <mainClass>timeline.project.ProgramMain</mainClass>
                     <options>
                         <option>--module-path</option>
                         <option>${project.basedir}/lib</option>
                         <option>--add-modules</option>
                         <option>javafx.controls,javafx.fxml,javafx.graphics</option>
                     </options>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>timeline.project.ProgramMain</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
