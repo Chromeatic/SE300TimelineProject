@@ -15,6 +15,7 @@ public class Timeline
     }
 
     public ArrayList<Event> getSortedEventList() { return sortedEvents; }
+    public ArrayList<Event> getShuffledEventList() { return shuffledEvents; }
 
     public ArrayList<Event> getListInDecades() { return sortedEventsInDecades; }
 
@@ -241,10 +242,10 @@ public class Timeline
         int i = 0;
         while(i < hints.length)
         {
-            System.out.print(shuffledEvents.get(i).getName());
-            System.out.print(" - ");
-            System.out.print(shuffledEvents.get(i+1).getName());
-            System.out.print(" : ");
+            // System.out.print(shuffledEvents.get(i).getName());
+            // System.out.print(" - ");
+            // System.out.print(shuffledEvents.get(i+1).getName());
+            // System.out.print(" : ");
             
             String thisEventName = shuffledEvents.get(i).getName();
             String nextEventNameShuffled = shuffledEvents.get(i+1).getName();
@@ -280,10 +281,10 @@ public class Timeline
         int i = 0;
         while(i < decadeHints.length)
         {
-            int thisEventDecade = shuffledEvents.get(i).getDecade();
-            int nextEventDecade = shuffledEvents.get(i+1).getDecade();
+            int thisDecade = shuffledEvents.get(i).getDecade();
+            int nextDecade = thisDecade + 10;
             
-            if( (thisEventDecade + 10) == nextEventDecade)
+            if( (thisDecade + 10) == nextDecade)
             {
                 decadeHints[i] = true;
             }
@@ -332,6 +333,9 @@ public class Timeline
         ArrayList<Event> shuffledEvents = timeline.shuffleList(sortedEvents);
         boolean[] hints = timeline.getHints(shuffledEvents, sortedEvents);
         boolean[] decadeHints = timeline.getDecadeHints(shuffledEvents, sortedEvents);
+
+        // Scanner scan = new Scanner(System.in);
+        // timeline.sortTimeline(shuffledEvents, scan);
         
         // System.out.println();
 

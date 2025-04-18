@@ -1,5 +1,3 @@
-package timeline.project;
-
 import java.util.ArrayList;
 
 public class TimelineCollection 
@@ -20,4 +18,10 @@ public class TimelineCollection
     }
 
 
+    
+    public static void main(String[] args) 
+    {
+        TimelineCollection collection = new TimelineCollection();
+        Timeline timeline = new Timeline();
+    }
 }
