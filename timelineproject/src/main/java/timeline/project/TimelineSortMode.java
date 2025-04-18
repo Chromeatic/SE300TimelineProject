@@ -2,36 +2,64 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TimelineSortMode extends Timeline{
+
+    private Event[] timelineArray;
+    private int[] decadesArray;
+
     
     public TimelineSortMode()
     {
         super();
-        
+        timelineArray = new Event[getShuffledEventList().size()];
     }
 
-    public void sortTimeline(ArrayList<Event> events, Scanner scanner)
+    public void setDecadesArray(ArrayList<Event> eventList)
     {
-        int index1 = 0;
-        int index2 = -1;
-        if(events.size() <= 1)
-        {
-            System.out.println("INVALID EVENTS LIST SIZE; events list must have more than one event...");
-            return;
-        }
-        while (!(index1 >= 0 && index1 < index2 && index2 < events.size()) && events.size() != 1)
-        {
-            String prompt = "Enter first index to swap: Enter a number between 0 and " + (events.size()-1);
+        //
+    }
 
-            System.out.println(prompt);
-            index1 = Integer.parseInt(scanner.nextLine());
-            System.out.println(prompt);
-            index2 = Integer.parseInt(scanner.nextLine());
-            if(!(index1 >= 0 && index1 < index2 && index2 < events.size()))
-            {
-                System.out.println("Invalid input. Try again");
-            }
-        } 
-        swap(events, index1, index2);
+    public void moveEventFromBankToArray(ArrayList<Event> eventBank, Event[] eventArray, int srcIndex, int dstIndex)
+    {
+        Event eventToMove = eventBank.get(srcIndex);
+        eventArray[dstIndex] = eventToMove;
+
+        eventBank.remove(eventToMove);
+    }
+    public void moveEventFromArrayToBank(ArrayList<Event> eventBank, Event[] eventArray, int srcIndex, int dstIndex)
+    {
+        Event eventToMove = eventArray[srcIndex];
+        eventBank.add(eventToMove);
+
+        eventArray[dstIndex] = null;
+    }
+    public void moveEventInsideArray(ArrayList<Event> eventBank, Event[] eventArray, int srcIndex, int dstIndex)
+    {
+        Event eventToMove = eventArray[srcIndex];
+
+        if(eventArray[dstIndex] != null)
+        {
+            eventBank.add(eventArray[dstIndex]);
+        }
+        eventArray[dstIndex] = eventToMove;
+
+        eventArray[srcIndex] = null;
+    }
+
+    // public boolean[] getHints(Event[] timelineArray)
+    // {
+    //     boolean[] hints = new boolean[timelineArray.length];
+        
+
+    //     return hints;
+    // }
+
+    public boolean[] getDecadeHints(Event[] timelineArray)
+    {
+        boolean[] hints = new boolean[timelineArray.length];
+
+
+
+        return hints;
     }
 
 

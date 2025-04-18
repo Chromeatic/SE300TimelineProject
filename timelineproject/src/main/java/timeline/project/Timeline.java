@@ -164,19 +164,43 @@ public class Timeline
         events.set(index2, temp);
     }
 
+    // public void sortTimeline(ArrayList<Event> events, Scanner scanner)
+    // {
+    //     int index1 = 0;
+    //     int index2 = -1;
+    //     if(events.size() == 1)
+    //     {
+    //         System.out.println("Timeline only contains one event. Cannot swap");
+    //     }
+    //     while (!(index1 >= 0 && index1 < index2 && index2 < events.size()) && events.size() != 1)
+    //     {
+    //         System.out.println("Enter first index to swap: Enter a number between 0 and " + (events.size()-1));
+    //         index1 = Integer.parseInt(scanner.nextLine());
+    //         System.out.println("Enter second index to swap: Enter a number between " + (index1+1) +" and " + (events.size()-1));
+    //         index2 = Integer.parseInt(scanner.nextLine());
+    //         if(!(index1 >= 0 && index1 < index2 && index2 < events.size()))
+    //         {
+    //             System.out.println("Invalid input. Try again");
+    //         }
+    //     } 
+    //     swap(events, index1, index2);
+    // }
     public void sortTimeline(ArrayList<Event> events, Scanner scanner)
     {
         int index1 = 0;
         int index2 = -1;
-        if(events.size() == 1)
+        if(events.size() <= 1)
         {
-            System.out.println("Timeline only contains one event. Cannot swap");
+            System.out.println("INVALID EVENTS LIST SIZE; events list must have more than one event...");
+            return;
         }
         while (!(index1 >= 0 && index1 < index2 && index2 < events.size()) && events.size() != 1)
         {
-            System.out.println("Enter first index to swap: Enter a number between 0 and " + (events.size()-1));
+            String prompt = "Enter first index to swap: Enter a number between 0 and " + (events.size()-1);
+
+            System.out.println(prompt);
             index1 = Integer.parseInt(scanner.nextLine());
-            System.out.println("Enter second index to swap: Enter a number between " + (index1+1) +" and " + (events.size()-1));
+            System.out.println(prompt);
             index2 = Integer.parseInt(scanner.nextLine());
             if(!(index1 >= 0 && index1 < index2 && index2 < events.size()))
             {
