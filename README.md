@@ -1,6 +1,6 @@
 ## SE 300 Timeline Project
 
-Authors: Ethan Yearling, Lynn Nyugen, David Bauer, Nathan SMith
+Authors: Ethan Yearling, Lynn Nyugen, David Bauer, Nathan Smith
 
 ## Description
 
