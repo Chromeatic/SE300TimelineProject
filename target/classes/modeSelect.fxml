@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="838.0" prefWidth="1551.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timeline.project.JavaFXMenu">
+   <children>
+      <VBox alignment="CENTER" prefHeight="804.0" prefWidth="1551.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mode Select" textAlignment="CENTER" wrappingWidth="676.0">
+               <font>
+                  <Font name="Century Gothic" size="72.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" stroke="BLACK" strokeType="INSIDE" width="682.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loaded Timeline" textAlignment="CENTER" wrappingWidth="676.0">
+               <font>
+                  <Font name="Century Gothic" size="33.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" onAction="#quizMode" prefWidth="500.0" text="Quiz">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#timelineMode" prefWidth="500.0" text="Timeline Sort">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#pivotMode" prefWidth="500.0" text="Pivot">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#beforeAfterMode" prefWidth="500.0" text="Before and After">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#flashcardMode" prefWidth="500.0" text="Flashcard">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#mainMenu" prefHeight="51.0" prefWidth="182.0" text="Back">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
