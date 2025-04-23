@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
-public class PivotMode extends Timeline{
+public class PivotMode{
 
+    private Timeline timeline;
     private Event pivot;
     private int pivotIndex;
     private ArrayList<Event> eventBank;
@@ -9,9 +10,9 @@ public class PivotMode extends Timeline{
     private ArrayList<Event> leftList;
 
 
-    public PivotMode()
+    public PivotMode(Timeline timeline)
     {
-        super();
+        // expect timeline is already set when passed in
     }
 
 
@@ -23,7 +24,7 @@ public class PivotMode extends Timeline{
 
     public void setPivotAndChoices()
     {
-        ArrayList<Event> eventsList = getSortedEventList();
+        ArrayList<Event> eventsList = timeline.getSortedEventList();
         setPivotIndex(eventsList);
         setEventChoices(eventsList, pivotIndex);
     }
@@ -31,7 +32,7 @@ public class PivotMode extends Timeline{
     public void setPivotIndex(ArrayList<Event> eventsList)
     {
         int size = eventsList.size();
-        int randomIndex = getRandomListIndex(size);
+        int randomIndex = timeline.getRandomListIndex(size);
         randomIndex %= size-1;
         if(randomIndex == 0) randomIndex = 1;
 
@@ -59,7 +60,8 @@ public class PivotMode extends Timeline{
 
     public static void main(String[] args) {
 
-        PivotMode pivot = new PivotMode();
+        Timeline timeline = new Timeline();
+        PivotMode pivot = new PivotMode(timeline);
         
         Event event1 = new Event("Event A", 1979_03_26, "(info)");
         Event event2 = new Event("Event B", 1980_12_20, "(info)");
@@ -68,7 +70,7 @@ public class PivotMode extends Timeline{
         Event event5 = new Event("Event E", 2005_08_09, "(info)");
         Event event6 = new Event("Event F", 2019_04_18, "(info)");
         
-        ArrayList<Event> sortedEvents = pivot.getSortedEventList();
+        ArrayList<Event> sortedEvents = timeline.getSortedEventList();
         sortedEvents.add(event1);
         sortedEvents.add(event2);
         sortedEvents.add(event3);

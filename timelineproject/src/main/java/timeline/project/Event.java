@@ -24,12 +24,14 @@ public class Event {
      * e.g. The value 1979_03_26 is equivalent to the value 19790326.
      */
     static final int MIN_TIME = 0001_01_01; 
-    static final int MAX_TIME = 2024_12_31; 
+    static final int MAX_TIME = 9999_12_31; 
 
-    static final int MIN_YEAR = 1;
-    static final int MAX_YEAR = 2025;
+    static final int MIN_YEAR = 0001;
+    static final int MAX_YEAR = 9999;
     static final int MIN_MONTH = 1;
     static final int MAX_MONTH = 12;
+    // static final int MIN_DAY = 1;
+    // static final int MAX_DAY = 31;
 
     
     public Event(String eventName, int eventTime, String eventInfo) 
@@ -38,54 +40,82 @@ public class Event {
         time = eventTime;
         info = eventInfo;
 
+        setTime();
+
         setDecade();
     }
 
     public void setTime()
     {
-        if(time < MIN_TIME || time > MAX_TIME)
-        {
-            time = MAX_TIME;
-        }
-
         // disassemble
         int year = getYear();
         int month = getMonth();
         int day = getDay();
 
         // set
-        setYear(year);
-        setMonth(month);
-        setDay(day);
+        year = checkYear(year);
+        month = checkMonth(month);
+        day = checkDay(day, month);
+
+        System.out.println(year + " " + month + " " + day);
 
         // reassemble
         time = year*(10000) + month*(100) + day;
     }
-    public void setYear(int year)
+    public int checkYear(int year)
     {
         if(year < MIN_YEAR || year > MAX_YEAR)
         {
-            year = MAX_YEAR;
+            year = MIN_YEAR;
         }
+        return year;
     }
-    public void setMonth(int month)
+    public int checkMonth(int month)
     {
         if(month < MIN_MONTH || month > MAX_MONTH)
         {
-            month = MAX_MONTH;
+            month = MIN_MONTH;
         }
+        return month;
     }
-    public void setDay(int day)
+    public int checkDay(int day, int month)
     {
-        //
+        int max;
+        boolean isOddMonth = (month % 2 == 1);
+        boolean isBeforeAugust = (month < 8);
+
+        if(month == 2)
+        {
+            if(day > 29) day = 29;
+            return day;
+        }
+        
+        if(isOddMonth && isBeforeAugust
+        || !isOddMonth && !isBeforeAugust)
+        {
+            max = 31;
+        }
+        else
+        {
+            max = 30;
+        }
+
+        if(day > max) day = 1;
+        return day;
     }
 
 
-    public void setName(String name)
+    // public void setName(String name)
+    // {
+
+    // }
+    public void setDecade()
     {
+        int year = getYear();
 
+        int firstDigit = year % 10;
+        decade = year - firstDigit;
     }
-    
 
     public int getTime() { return time; }
     // isolate respective digits to get each value of time
@@ -96,13 +126,7 @@ public class Event {
     
     public int getDecade() { return decade; }
 
-    public void setDecade()
-    {
-        int year = getYear();
-
-        int firstDigit = year % 10;
-        decade = year - firstDigit;
-    }
+    
 
     // not to be accessed out of class
     // private int isolateTimeValue(int timeValue, int minDigit, int maxDigit)
@@ -118,5 +142,23 @@ public class Event {
     public String getInfo() { return info; }
     
     
+
+    public static void main(String[] args) {
+        
+        Event event = new Event("name", 1_01_63, "info");
+        event = new Event("name", 1021_02_63, "info");
+        event = new Event("name", 1021_03_63, "info");
+        event = new Event("name", 1021_04_63, "info");
+        event = new Event("name", 1021_05_63, "info");
+        event = new Event("name", 1021_06_63, "info");
+        event = new Event("name", 1021_07_63, "info");
+        event = new Event("name", 1021_08_63, "info");
+        event = new Event("name", 1021_09_63, "info");
+        event = new Event("name", 1021_10_63, "info");
+        event = new Event("name", 1021_11_63, "info");
+        event = new Event("name", 1021_12_63, "info");
+
+
+    }
 
 }

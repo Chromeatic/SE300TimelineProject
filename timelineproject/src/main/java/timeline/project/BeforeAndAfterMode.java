@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
-public class BeforeAndAfterMode extends Timeline{
+public class BeforeAndAfterMode{
 
+    private Timeline timeline;
     private ArrayList<Event> eventsInWaiting;
     private ArrayList<Event> eventsDiscarded;
     private Event contenderEvent;
     private Event oppositionEvent;
 
 
-    public BeforeAndAfterMode()
-    {
-        super();
-        eventsInWaiting = getShuffledEventList();
+    public BeforeAndAfterMode(Timeline timeline)
+    {        
+        eventsInWaiting = timeline.getShuffledEventList();
         eventsDiscarded = new ArrayList<Event>();
     }
 
@@ -63,7 +63,7 @@ public class BeforeAndAfterMode extends Timeline{
             System.out.println("Cannot reassign; events waiting list is empty...");
             return;
         }
-        int randomIndex = getRandomListIndex(eventsInWaiting.size());
+        int randomIndex = timeline.getRandomListIndex(eventsInWaiting.size());
         oppositionEvent = eventsInWaiting.get(randomIndex);
         
         eventsInWaiting.remove(randomIndex);
@@ -111,7 +111,8 @@ public class BeforeAndAfterMode extends Timeline{
     }
 
     public static void main(String[] args) {
-        BeforeAndAfterMode baaMode = new BeforeAndAfterMode();
+        Timeline timeline = new Timeline();
+        BeforeAndAfterMode baaMode = new BeforeAndAfterMode(timeline);
 
         Event event1 = new Event("Event A", 1979_03_26, "(info)");
         Event event2 = new Event("Event B", 1980_12_20, "(info)");
@@ -122,14 +123,14 @@ public class BeforeAndAfterMode extends Timeline{
 
         
         
-        ArrayList<Event> sortedEvents = baaMode.getSortedEventList();
+        ArrayList<Event> sortedEvents = timeline.getSortedEventList();
         sortedEvents.add(event1);
         sortedEvents.add(event2);
         sortedEvents.add(event3);
         sortedEvents.add(event4);
         sortedEvents.add(event5);
         sortedEvents.add(event6);
-        ArrayList<Event> shuffledEvents = baaMode.shuffleList(sortedEvents);
+        ArrayList<Event> shuffledEvents = timeline.shuffleList(sortedEvents);
 
 
         int beforeCount = 0;

@@ -1,21 +1,24 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TimelineSortMode extends Timeline{
+public class TimelineSortMode{
 
     private Event[] timelineArray;
     private int[] decadesArray;
 
     
-    public TimelineSortMode()
+    public TimelineSortMode(Timeline timeline)
     {
-        super();
-        timelineArray = new Event[getShuffledEventList().size()];
+        timelineArray = new Event[timeline.getShuffledEventList().size()];
     }
 
     public void setDecadesArray(ArrayList<Event> eventList)
     {
-        //
+        int i = 0;
+        while(i < eventList.size())
+        {
+            
+        }
     }
 
     public void moveEventFromBankToArray(ArrayList<Event> eventBank, Event[] eventArray, int srcIndex, int dstIndex)
@@ -65,7 +68,8 @@ public class TimelineSortMode extends Timeline{
 
     public static void main(String[] args) {
 
-        TimelineSortMode sort = new TimelineSortMode();
+        Timeline timeline = new Timeline();
+        TimelineSortMode sort = new TimelineSortMode(timeline);
 
         Event event1 = new Event("Event A", 1979_03_26, "(info)");
         Event event2 = new Event("Event B", 1980_12_20, "(info)");
@@ -75,7 +79,7 @@ public class TimelineSortMode extends Timeline{
         Event event6 = new Event("Event F", 2019_04_18, "(info)");
         
 
-        ArrayList<Event> sortedEvents = sort.getSortedEventList();
+        ArrayList<Event> sortedEvents = timeline.getSortedEventList();
         sortedEvents.add(event1);
         sortedEvents.add(event2);
         sortedEvents.add(event3);
@@ -83,12 +87,12 @@ public class TimelineSortMode extends Timeline{
         sortedEvents.add(event5);
         sortedEvents.add(event6);
         
-        ArrayList<Event> shuffledEvents = sort.shuffleList(sortedEvents);
-        boolean[] hints = sort.getHints(shuffledEvents, sortedEvents);
-        boolean[] decadeHints = sort.getDecadeHints(shuffledEvents, sortedEvents);
+        ArrayList<Event> shuffledEvents = timeline.shuffleList(sortedEvents);
+        boolean[] hints = timeline.getHints(shuffledEvents, sortedEvents);
+        boolean[] decadeHints = timeline.getDecadeHints(shuffledEvents, sortedEvents);
 
         Scanner scan = new Scanner(System.in);
-        sort.sortTimeline(shuffledEvents, scan);
+        timeline.sortTimeline(shuffledEvents, scan);
         
     }
 }
