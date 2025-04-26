@@ -10,7 +10,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 
 public class JavaFXMenu extends Application {
 
@@ -23,12 +22,13 @@ public class JavaFXMenu extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         JavaFXMenu.primaryStage = primaryStage;
+        Mode.setPrimaryStage(primaryStage); 
         primaryStage.setTitle("JavaFX Menu");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainMenu.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -51,8 +51,7 @@ public class JavaFXMenu extends Application {
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/modeSelect.fxml"));
         Parent root = loader.load();
-
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 
@@ -61,7 +60,21 @@ public class JavaFXMenu extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainMenu.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root, 1280, 720);
+        Text timelineTextNode = (Text) root.lookup("#loadedTimelineText");
+
+        if (timelineTextNode != null) {
+            if (loadedTimeline != null && loadedTimeline.getFilePath() != null) { 
+                File timelineFile = new File(loadedTimeline.getFilePath());
+                String fileName = timelineFile.getName().replace(".csv", "");
+                timelineTextNode.setText("Loaded Timeline: " + fileName);
+            } else {
+                timelineTextNode.setText("Loaded Timeline: None");
+            }
+        } else {
+             System.err.println("Warning: Could not find Text node with fx:id 'loadedTimelineText' in mainMenu.fxml when returning to main menu.");
+        }
+
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 
@@ -69,8 +82,7 @@ public class JavaFXMenu extends Application {
     private void userStatistics() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/userStatistics.fxml"));
         Parent root = loader.load();
-
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 
@@ -78,8 +90,7 @@ public class JavaFXMenu extends Application {
     private void timelineMode() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/timelineMode.fxml"));
         Parent root = loader.load();
-
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 
@@ -87,7 +98,7 @@ public class JavaFXMenu extends Application {
     private void beforeAfterMode() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/beforeAfter.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 
@@ -95,7 +106,7 @@ public class JavaFXMenu extends Application {
     private void quizMode() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/quizMode.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 
@@ -103,7 +114,7 @@ public class JavaFXMenu extends Application {
     private void pivotMode() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pivotMode.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 
@@ -111,7 +122,7 @@ public class JavaFXMenu extends Application {
     private void flashcardMode() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/flashcardMode.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root, 1280, 720);
+        Scene scene = new Scene(root, primaryStage.getWidth(), primaryStage.getHeight());
         primaryStage.setScene(scene);
     }
 

@@ -18,12 +18,12 @@
                </font>
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" stroke="BLACK" strokeType="INSIDE" width="568.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER" wrappingWidth="676.0">
+            <Text fx:id="questionText" strokeType="OUTSIDE" strokeWidth="0.0" text="Question" textAlignment="CENTER" wrappingWidth="676.0">
                <font>
                   <Font name="Century Gothic" size="33.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" prefWidth="385.0" text="Answer 1">
+            <Button fx:id="answerButton1" mnemonicParsing="false" prefWidth="385.0" text="Answer 1">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -31,7 +31,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="385.0" text="Answer 2">
+            <Button fx:id="answerButton2" mnemonicParsing="false" prefWidth="385.0" text="Answer 2">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -39,7 +39,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="385.0" text="Answer 3">
+            <Button fx:id="answerButton3" mnemonicParsing="false" prefWidth="385.0" text="Answer 3">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -47,7 +47,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="385.0" text="Answer 4">
+            <Button fx:id="answerButton4" mnemonicParsing="false" prefWidth="385.0" text="Answer 4">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -55,10 +55,6 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="150.0" text="SUBMIT">
-               <font>
-                  <Font size="18.0" />
-               </font></Button>
             <Button mnemonicParsing="false" onAction="#modeSelect" prefHeight="61.0" prefWidth="150.0" text="EXIT">
                <font>
                   <Font size="18.0" />

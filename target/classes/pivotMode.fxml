@@ -21,33 +21,26 @@
                </font>
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" stroke="BLACK" strokeType="INSIDE" width="773.0" />
-            <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="150.0" text="SUBMIT" />
+            <HBox alignment="CENTER" spacing="350.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#insertBeforePivot" prefHeight="61.0" prefWidth="150.0" text="Insert Before" />
+                  <Button mnemonicParsing="false" onAction="#handleSubmit" prefHeight="61.0" prefWidth="150.0" text="SUBMIT" />
+                  <Button mnemonicParsing="false" onAction="#insertAfterPivot" prefHeight="61.0" prefWidth="150.0" text="Insert After" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER">
                <children>
                   <ScrollPane prefHeight="178.0" prefWidth="823.0">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
-                              <HBox alignment="CENTER" minWidth="1000.0" spacing="5.0">
+                              <HBox fx:id="beforePivotHBox" alignment="CENTER" minWidth="1000.0" spacing="5.0">
                                  <opaqueInsets>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </opaqueInsets>
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                 </children>
                               </HBox>
                            </children>
                         </AnchorPane>
@@ -56,7 +49,7 @@
                         <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
                      </padding>
                   </ScrollPane>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event" textAlignment="CENTER" underline="true" wrappingWidth="196.0">
+                  <Text fx:id="pivotEventText" strokeType="OUTSIDE" strokeWidth="0.0" text="Pivot Event Name" textAlignment="CENTER" underline="true" wrappingWidth="196.0">
                      <font>
                         <Font name="Century Gothic" size="24.0" />
                      </font>
@@ -65,26 +58,13 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
-                              <HBox alignment="CENTER" minWidth="1000.0" spacing="5.0">
+                              <HBox fx:id="afterPivotHBox" alignment="CENTER" minWidth="1000.0" spacing="5.0">
                                  <opaqueInsets>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </opaqueInsets>
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
                                  </cursor>
-                                 <children>
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                    <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Button" />
-                                 </children>
                               </HBox>
                            </children>
                         </AnchorPane>
@@ -99,7 +79,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="224.0">
                      <children>
-                        <HBox alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox fx:id="timelineEventsHBox" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -109,58 +89,6 @@
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="200.0" text="Button" textAlignment="CENTER">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                              </Button>
-                           </children>
                         </HBox>
                      </children>
                      <padding>

@@ -19,22 +19,17 @@
                </font>
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" stroke="BLACK" strokeType="INSIDE" width="716.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Loaded Timeline" textAlignment="CENTER" wrappingWidth="676.0">
-               <font>
-                  <Font name="Century Gothic" size="33.0" />
-               </font>
-            </Text>
             <HBox alignment="CENTER" prefHeight="192.0" prefWidth="1550.0" spacing="20.0">
                <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EVENT" textAlignment="CENTER" textOrigin="CENTER">
+                  <Text fx:id="comparingEventText" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EVENT" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="400.0">
                      <font>
                         <Font size="49.0" />
                      </font>
                   </Text>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="6.0" stroke="BLACK" strokeType="INSIDE" width="108.0" />
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EVENT" textAlignment="CENTER" textOrigin="CENTER" underline="true">
+                  <Text fx:id="userEventText" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EVENT" textAlignment="CENTER" textOrigin="CENTER" underline="true" wrappingWidth="400.0">
                      <font>
-                        <Font size="49.0" />
+                        <Font name="System Bold" size="49.0" />
                      </font>
                   </Text>
                </children>
@@ -46,12 +41,12 @@
             </Text>
             <HBox alignment="CENTER" prefWidth="1550.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="300.0" text="BEFORE" textAlignment="CENTER">
+                  <Button fx:id="beforeButton" mnemonicParsing="false" onAction="#handleBeforeButton" prefWidth="300.0" text="BEFORE" textAlignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="300.0" text="AFTER" textAlignment="CENTER">
+                  <Button fx:id="afterButton" mnemonicParsing="false" onAction="#handleAfterButton" prefWidth="300.0" text="AFTER" textAlignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>

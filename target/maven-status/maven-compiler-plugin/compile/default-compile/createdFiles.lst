@@ -1,9 +1,9 @@
-timeline\project\TimelineCollection.class
 timeline\project\PivotMode.class
 timeline\project\ProgramMain.class
 timeline\project\FlashcardMode.class
 timeline\project\BeforeAfterMode.class
 timeline\project\TimelineMode.class
+timeline\project\Mode.class
 timeline\project\Timeline.class
 timeline\project\JavaFXMenu.class
 timeline\project\Event.class

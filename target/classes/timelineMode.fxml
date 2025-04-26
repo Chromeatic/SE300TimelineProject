@@ -21,12 +21,18 @@
                </font>
             </Text>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" stroke="BLACK" strokeType="INSIDE" width="773.0" />
-            <Button mnemonicParsing="false" prefHeight="61.0" prefWidth="150.0" text="SUBMIT" />
-            <ScrollPane prefHeight="178.0" prefWidth="1193.0">
+            <HBox alignment="CENTER" spacing="350.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#insertEventAtStart" prefHeight="61.0" prefWidth="150.0" text="Insert Event at Start" />
+                  <Button mnemonicParsing="false" onAction="#handleSubmit" prefHeight="61.0" prefWidth="150.0" text="SUBMIT" />
+                  <Button mnemonicParsing="false" onAction="#insertEventAtEnd" prefHeight="61.0" prefWidth="150.0" text="Insert Event at End" />
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="240.0" prefWidth="1193.0">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
-                        <HBox alignment="CENTER" minWidth="1000.0" spacing="5.0">
+                        <HBox fx:id="upperTimelineHBox" alignment="CENTER" minWidth="1000.0" spacing="5.0" HBox.hgrow="ALWAYS">
                            <opaqueInsets>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </opaqueInsets>
@@ -45,7 +51,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="224.0">
                      <children>
-                        <HBox fx:id="timelineEventsHBox" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox fx:id="timelineEventsHBox" alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -63,6 +69,7 @@
                   </AnchorPane>
                </content>
             </ScrollPane>
+            <Button mnemonicParsing="false" onAction="#returnEvent" prefHeight="61.0" prefWidth="150.0" text="Return Event"/>
             <Button mnemonicParsing="false" onAction="#modeSelect" prefHeight="61.0" prefWidth="150.0" text="EXIT" />
          </children>
          <padding>

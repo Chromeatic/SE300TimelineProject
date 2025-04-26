@@ -1,28 +1,55 @@
 package timeline.project;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import java.net.URL;
+import java.util.Collections;
+import java.util.ResourceBundle;
 
-public class FlashcardMode {
-    private static Stage primaryStage;
-
-    public static void setPrimaryStage(Stage stage) {
-        primaryStage = stage;
-    }
+public class FlashcardMode extends Mode {
 
     @FXML
-    private void modeSelect(ActionEvent event) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/modeSelect.fxml"));
-        Parent root = loader.load();
-        Stage stage = primaryStage;
-        if (stage == null && event.getSource() != null) {
-            stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        }
-        Scene scene = new Scene(root, 1280, 720);
-        stage.setScene(scene);
+    private HBox timelineEventsHBox; 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        super.initialize(location, resources); 
+        populateFlashcards();
     }
+
+    private void populateFlashcards() {
+        if (getTimeline() != null && timelineEventsHBox != null) {
+            timelineEventsHBox.getChildren().clear(); 
+            
+            Collections.sort(getTimeline().getEvents());
+
+            for (Event event : getTimeline().getEvents()) {
+                String eventName = event.getName();
+                String eventDate = event.getDate().toString();
+                String frontText = eventName + "\n" + eventDate;
+
+                Button eventButton = new Button(frontText);
+                eventButton.setPrefHeight(300.0);
+                eventButton.setPrefWidth(350.0);
+                eventButton.setFont(new Font(24.0));
+                eventButton.setWrapText(true);
+                eventButton.setStyle("-fx-text-alignment: center;"); 
+
+                final String eventDescription = event.getDescription();
+
+                eventButton.setOnAction(e -> {
+                    if (eventButton.getText().equals(frontText)) {
+                        eventButton.setText(eventDescription);
+                    } else {
+                        eventButton.setText(frontText);
+                    }
+                });
+
+                timelineEventsHBox.getChildren().add(eventButton);
+            }
+        }
+    }
+
 }
