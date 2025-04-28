@@ -44,8 +44,7 @@ public class TimelineMode extends Mode {
 
     private Button createEventButton(Event event) {
         String eventName = event.getName();
-        String eventDate = event.getDate().toString();;
-        String buttonText = eventName + "\n" + eventDate;
+        String buttonText = eventName;
 
         Button btn = new Button(buttonText);
         btn.setPrefHeight(200);
